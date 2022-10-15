@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login form</title>
+    <script defer src="login.js"></script>
+    <link rel="stylesheet" href="login1.css">
+</head>
+<body>
+    <h3>LOGIN</h3>
+    <div id="error" style="color: red; font-style:italic;"></div>
+        <form id="form" method="POST" action="validate.php">
+            <div class="container">
+                <div class="formField">
+                    <label><b>Username:</b></label>
+                    <input type="text" id="username" name="name" placeholder="Enter your name" >
+                    <small></small>
+                </div>
+
+                <div class="formField">
+                    <label><b>Email:</b></label>
+                    <input type="text" id="email" name="email" placeholder="example@gmail.com" >
+                    <small></small>
+                </div>
+        
+                <div class="formField">
+                    <label><b>Password:</b></label>
+                    <input type="password" id="password" name="password" placeholder="Enter password" >
+                    <small></small>
+                </div>
+        
+                <input type="checkbox" id="rmb-me" name="rmb-me" value="rmb-me" checked>Remember Me<p>
+        
+                <button type="submit" class="log-in" >Login</button>
+                      
+            </div>
+            <div class="container" style="background-color: #c6c4c4;">
+                <p>Don't have an account?<button type="button" class="register-btn" onclick="window.location.href='register.html';">Register</button>
+                <span class="psw">Forgot <a href="reset-password.html">password?</a></span>
+            </div>
+        </form>
+</body>
+</html>

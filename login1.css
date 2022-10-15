@@ -1,0 +1,79 @@
+body{
+    background-color: #d7d8dd;
+}
+
+form {
+    border: 3px solid #f1f1f1;
+    color: black;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 18px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.formField input:focus{
+    outline: 0;
+}
+
+.formField.success input{
+    border-color: #09c372;
+}
+
+.formField.error input{
+    border-color: #ff3860;
+}
+
+.formField .error{
+    color: #ff3860;
+    font-size: 11px;
+    height: 13px;
+}
+
+.formField small{
+    color: #ff3860;
+    font-size: 14px;
+}
+
+.log-in {
+    background-color: #084cb1;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.log-in:hover{
+    /* opacity: 0.8; */
+    background-color: #074197;
+}
+
+span.psw {
+    float: right;
+    padding: 5px 10px;
+}
+
+.container {
+    padding: 16px;
+}
+
+.register-btn {
+    background-color: #ee0b0b;
+    color: white;
+    padding: 8px;
+    margin: 3px;
+    border: none;
+    border-radius: 7%;
+    cursor: pointer;
+}
+
+.register-btn:hover {
+    background-color: #dc0a0a;
+}
+

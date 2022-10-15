@@ -1,0 +1,61 @@
+body{
+    background-image: url("images/pic\ \(2\).jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    /* background-color: blueviolet; */
+}
+
+#form{
+    width: 350px;
+    margin: 20vh auto 0 auto;
+    padding: 20px;
+    background-color: whitesmoke;
+    border-radius: 4px;
+    
+}
+
+#form h1{
+    color: rgb(131, 135, 137);
+    text-align: center;
+}
+#form button{
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    background-color: rgb(41, 57, 194);
+    border: none;
+    border-radius: 3px;
+}
+.btn-submit:hover{
+    opacity: 0.8;
+}
+.formField{
+    display: flex;
+    flex-direction: column;
+}
+.formField input{
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
+    font-size: 12px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.formField input:focus{
+    outline: 0;
+}
+.formField.success input{
+    border-color: #09c372;
+}
+.formField.error input{
+    border-color: #ff3860;
+}
+.formField .error{
+    color: #ff3860;
+    font-size: 11px;
+    height: 13px;
+}
+.formField small{
+    color: #ff3860;
+}
