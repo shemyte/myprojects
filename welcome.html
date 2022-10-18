@@ -28,6 +28,29 @@
             float: right;
             font-size: 14px;
         }
+        /* form{
+            width: 450px;
+            margin: 8vh auto 0 auto;
+        } */
+        label{
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+        .formField input{
+            padding: 10px;
+        }
+        .container{
+            background-color: #848482;
+            margin: 0;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+        }
+        .formField{
+            display: flex;
+            flex-direction: column;
+        }
+        
     </style>
 </head>
 <body>
@@ -49,24 +72,6 @@
                 Phasellus sollicitudin venenatis sodales. Phasellus a urna quam. Aenean ex metus, malesuada sed finibus eget, porttitor ut urna. Nunc consequat, sapien vitae congue tempus, nibh tellus placerat quam, quis iaculis elit leo venenatis leo. Sed vel massa mauris. Vestibulum consequat metus sem, aliquam condimentum magna semper id.
             </p>
         </div>
-
-        <!-- <div class="container">
-            <h5 style="text-decoration: underline;">Our Team</h5>
-            <div class="row" id="imagez">
-                <div class="col-md-4">
-                    <img src="./images/board.jpg" alt="" style="max-width: 100%;">
-                    <p>Board of Directors</p>
-                </div>
-                <div class="col-md-4">
-                    <img src="./images/alex.jpg" alt="" style="max-width: 100%; ">
-                    <p>C.E.O</p>
-                </div>
-                <div class="col-md-4">
-                    <img src="./images/pic (4).jpg" alt="" style="max-width: 100%;">
-                    <p>Human Resource</p>
-                </div>
-            </div>
-        </div> -->
         <form id="form" method="POST" action="">
             <div class="container">
                 <div class="formField">
@@ -83,19 +88,19 @@
         
                 <div class="formField">
                     <label><b>Address:</b></label>
-                    <input type="password" id="password" name="password" placeholder="Enter password" >
+                    <input type="text" id="address" name="address" placeholder="Enter your address" >
                     <small></small>
                 </div>
 
                 <div class="formField">
                     <label><b>Registration Number:</b></label>
-                    <input type="password" id="password" name="password" placeholder="Enter password" >
+                    <input type="text" id="regno" name="regno" placeholder="Enter your registration number" >
                     <small></small>
                 </div>
         
-                <input type="checkbox" id="rmb-me" name="rmb-me" value="rmb-me" checked>Remember Me<p>
+                <!-- <input type="checkbox" id="rmb-me" name="rmb-me" value="rmb-me" checked>Remember Me<p> -->
         
-                <button type="submit" class="log-in" >Login</button>
+                <button type="submit" class="log-in" >Submit</button>
             </div>
         </form>
     </div>
