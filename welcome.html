@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"> -->
     <title>Welcome page</title>
     <style>
         body{
@@ -50,7 +50,7 @@
             </p>
         </div>
 
-        <div class="container">
+        <!-- <div class="container">
             <h5 style="text-decoration: underline;">Our Team</h5>
             <div class="row" id="imagez">
                 <div class="col-md-4">
@@ -66,6 +66,38 @@
                     <p>Human Resource</p>
                 </div>
             </div>
-        </div>
+        </div> -->
+        <form id="form" method="POST" action="">
+            <div class="container">
+                <div class="formField">
+                    <label><b>Mobile number:</b></label>
+                    <input type="text" id="mbnumber" name="mbnumber" placeholder="Enter your mobile number" >
+                    <small></small>
+                </div>
+
+                <div class="formField">
+                    <label><b>Email:</b></label>
+                    <input type="text" id="email" name="email" placeholder="example@gmail.com" >
+                    <small></small>
+                </div>
+        
+                <div class="formField">
+                    <label><b>Address:</b></label>
+                    <input type="password" id="password" name="password" placeholder="Enter password" >
+                    <small></small>
+                </div>
+
+                <div class="formField">
+                    <label><b>Registration Number:</b></label>
+                    <input type="password" id="password" name="password" placeholder="Enter password" >
+                    <small></small>
+                </div>
+        
+                <input type="checkbox" id="rmb-me" name="rmb-me" value="rmb-me" checked>Remember Me<p>
+        
+                <button type="submit" class="log-in" >Login</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
