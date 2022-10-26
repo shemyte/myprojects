@@ -1,5 +1,7 @@
 const usernameEl = document.querySelector('#username');
 const emailEl = document.querySelector('#email');
+const phoneEl = document.querySelector('#phone');
+const registrationEl = document.querySelector('#regno');
 const passwordEl = document.querySelector('#password');
 const password2El = document.querySelector('#password2');
 
@@ -37,6 +39,12 @@ const isBetween = (length, min, max) => length < min || length > max ? false : t
 const isEmailValid = (email) => {
         const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email).toLowerCase());
+};
+
+// to check if pasword is valid
+const isPhoneValid = (phone) => {
+    const re = /(\+\d{1,3}\s?)?((\(\d{3}\)\s?)|(\d{3})(\s|-?))(\d{3}(\s|-?))(\d{4})(\s?(([E|e]xt[:|.|]?)|x|X)(\s?\d+))?/g;
+    return re.test(phone);
 };
 
 // check if password is strong
@@ -78,7 +86,6 @@ const checkUsername = () => {
         const min = 3,
             max = 25;
         const username = usernameEl.value.trim();
-    
         if (!isRequired(username)) {
             showError(usernameEl, 'Username cannot be blank.');
         } else if (!isBetween(username.length, min, max)) {
@@ -96,7 +103,7 @@ const checkUsername = () => {
         if (!isRequired(email)) {
             showError(emailEl, 'Email cannot be blank.');
         } else if (!isEmailValid(email)) {
-            showError(emailEl, 'Email is not valid.')
+            showError(emailEl, 'Email is not valid.');
         } else {
             showSuccess(emailEl);
             valid = true;
@@ -104,13 +111,25 @@ const checkUsername = () => {
         return valid;
     }
 
+    // validate phone number - work in progress
+    const checkPhone = () => {
+        let valid = false;
+        const phone = phoneEl.value.trim();
+        if(!isRequired(phone)) {
+            showError(phoneEl, 'Phone cannot be blank.');
+        }else if(!isPhoneValid(phone)){
+            showError(phoneEl, 'Phone is not valid');
+        }else {
+            showSuccess(phoneEl);
+            valid = true;
+        }
+        return valid;
+    }
+
 //     validate the password
 const checkPassword = () => {
-
         let valid = false;
-    
         const password = passwordEl.value.trim();
-    
         if (!isRequired(password)) {
             showError(passwordEl, 'Password cannot be blank.');
         } else if (!isPasswordSecure(password)) {
@@ -119,7 +138,6 @@ const checkPassword = () => {
             showSuccess(passwordEl);
             valid = true;
         }
-    
         return valid;
     };
 

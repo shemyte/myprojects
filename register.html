@@ -13,6 +13,7 @@
     <div class="container">
         <form id="form" action="./registration.php" method="POST">
             <h1 >Create Account</h1>
+            <p>Already have an account? <a href="login.html">Login</a></p>
             <div class="formField">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username">
@@ -22,6 +23,18 @@
             <div class="formField">
                 <label for="email">Email</label>
                 <input type="text" id="email" name="email">
+                <small></small>
+            </div>
+<!-- work on progress -->
+            <div class="formField">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone">
+                <small></small>
+            </div>
+
+            <div class="formField">
+                <label for="registration">Registration Number</label>
+                <input type="text" id="regno" name="regno">
                 <small></small>
             </div>
 
@@ -38,7 +51,7 @@
             </div>
 
             <button type="submit" class="btn-submit">Register</button>
-            <p>Already have an account? <a href="login.html">Login</a></p>
+           
         </form>
     </div>
 </body>

@@ -13,9 +13,13 @@ body{
     border-radius: 4px;
 }
 
-#form h1{
+#form h1,p{
     color: rgb(131, 135, 137);
     text-align: center;
+}
+a{
+    text-decoration: none;
+    color: blueviolet;
 }
 #form button{
     padding: 10px;
