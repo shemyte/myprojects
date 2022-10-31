@@ -10,7 +10,7 @@
     $password = $_POST['password'];
     // $password2 = $_POST['password2'];
 
-    $s1 = "SELECT * from user_info where email = '$email'";
+    $s1 = "SELECT * from user_info where email = '$email' AND password = '$password'";
 
     $result1 = mysqli_query($con, $s1);
 
