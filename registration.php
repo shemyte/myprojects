@@ -9,6 +9,9 @@ mysqli_select_db($con, 'webis');
 
 $username = $_POST['username'];
 $email = $_POST['email'];
+$phone= $_POST['phone'];
+$registration= $_POST['regno'];
+$address= $_POST['address'];
 $password = $_POST['password'];
 $password2 = $_POST['password2'];
 
@@ -21,7 +24,7 @@ $num = mysqli_num_rows($result);
 if($num == 1){
     echo "Email already taken";
 }else{
-    $reg = "insert into user_info(username,email,password,password2) values ('$username','$email','$password','$password2')";
+    $reg = "insert into user_info(username,email,phone,registration,address,password,password2) values ('$username','$email','$phone','$registration','$address','$password','$password2')";
     mysqli_query($con, $reg);
     echo "Registration Successfully";
 }

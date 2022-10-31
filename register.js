@@ -2,6 +2,7 @@ const usernameEl = document.querySelector('#username');
 const emailEl = document.querySelector('#email');
 const phoneEl = document.querySelector('#phone');
 const registrationEl = document.querySelector('#regno');
+const addressEl = document.querySelector('#address');
 const passwordEl = document.querySelector('#password');
 const password2El = document.querySelector('#password2');
 
@@ -16,11 +17,17 @@ form.addEventListener('submit', function (e) {
         let isUsernameValid = checkUsername(),
             isEmailValid = checkEmail(),
             isPasswordValid = checkPassword(),
+            isPhoneValid = checkPhone(),
+            isRegistrationValid = checkRegistration(),
+            isAddressValid = checkAddress(),
             isConfirmPasswordValid = checkConfirmPassword();
     
         let isFormValid = isUsernameValid &&
             isEmailValid &&
             isPasswordValid &&
+            isPhoneValid &&
+            isRegistrationValid &&
+            isAddressValid &&
             isConfirmPasswordValid;
     
         // submit to the server if the form is valid
@@ -29,7 +36,7 @@ form.addEventListener('submit', function (e) {
         }
     });
 
-// the isrequired function returns tru if the input argument is empty
+// the isrequired function returns true if the input argument is empty
 const isRequired = value => value === '' ? false : true;
 
 // the isBetween() returns false if the length argument is not between the min and max argument
@@ -41,7 +48,7 @@ const isEmailValid = (email) => {
         return re.test(String(email).toLowerCase());
 };
 
-// to check if pasword is valid
+// to check if phone is valid
 const isPhoneValid = (phone) => {
     const re = /(\+\d{1,3}\s?)?((\(\d{3}\)\s?)|(\d{3})(\s|-?))(\d{3}(\s|-?))(\d{4})(\s?(([E|e]xt[:|.|]?)|x|X)(\s?\d+))?/g;
     return re.test(phone);
@@ -111,7 +118,7 @@ const checkUsername = () => {
         return valid;
     }
 
-    // validate phone number - work in progress
+    // validating phone number
     const checkPhone = () => {
         let valid = false;
         const phone = phoneEl.value.trim();
@@ -121,6 +128,32 @@ const checkUsername = () => {
             showError(phoneEl, 'Phone is not valid');
         }else {
             showSuccess(phoneEl);
+            valid = true;
+        }
+        return valid;
+    }
+
+    // validate registration number - work in progress
+    const checkRegistration = () => {
+        let valid = false;
+        const registration = registrationEl.value.trim();
+        if(!isRequired(registration)) {
+            showError(registrationEl, 'Registration cannot be blank');
+        }else {
+            showSuccess(registrationEl);
+            valid = true;
+        }
+        return valid;
+    }
+
+    // validate address - work in progress
+    const checkAddress = () => {
+        let valid = false;
+        const address = addressEl.value.trim();
+        if(!isRequired(address)) {
+            showError(addressEl, 'Address cannot be blank');
+        }else {
+            showSuccess(addressEl);
             valid = true;
         }
         return valid;
