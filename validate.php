@@ -17,8 +17,8 @@
     $num = mysqli_num_rows($result1);
 
     if($num == 1){
-        $_SESSION['username'] = $username;
-       header('location: welcome.html');
+        // $_SESSION['username'] = $username;
+       header('location: welcome.php');
     }else{
        echo "Wrong email or password!";
     }
