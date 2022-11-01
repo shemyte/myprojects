@@ -15,27 +15,41 @@ use PHPMailer\PHPMailer\Exception;
 //Load Composer's autoloader
 require 'vendor/autoload.php';
  function send_password_reset($get_name, $get_email, $token) {
+    $mail = new PHPMailer(true);
+
     //Server settings
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
     $mail->isSMTP();                                            //Send using SMTP
-    $mail->Host       = 'smtp.example.com';                     //Set the SMTP server to send through
+    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'user@example.com';                     //SMTP username
-    $mail->Password   = 'secret';                               //SMTP password
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    $mail->Username   = 'shemaiahngala8@gmail.com';                     //SMTP username
+    $mail->Password   = '364818471998RONA.';                               //SMTP password
+    // $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; 
+    $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
+    $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom('from@example.com', 'Mailer');
-    $mail->addAddress('joe@example.net', 'Joe User');     //Add a recipient
-    $mail->addAddress('ellen@example.com');               //Name is optional
-    $mail->addReplyTo('info@example.com', 'Information');
-    $mail->addCC('cc@example.com');
-    $mail->addBCC('bcc@example.com');
+    $mail->setFrom('shemaiahngala8@gmail.com', $get_name);
+    $mail->addAddress($get_email);     //Add a recipient
+    
+    $mail->isHTML(true);               
+    $mail->Subject = "Reset password notofication";
+
+    $email_teplate = "
+        <h2>Hello</h2>
+        <h3>Youe are receiving this email because we received a password reset request for your account.</h3>
+        <br><br>
+        <a href='http://localhost/web-based-form/myprojects/password-reset.php?token=$token&email=$email'>Click Me</a>
+        ";
+
+        $mail->Body = $email_teplate;
+    $mail->send();
+    // $mail->addCC('cc@example.com');
+    // $mail->addBCC('bcc@example.com');
 
     //Attachments
-    $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
-    $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+    // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
  }
 
  if(isset($_POST['password-reset-link'])){
