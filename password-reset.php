@@ -25,18 +25,18 @@
     </style>
 </head>
 <body>
-    <form id="password-reset-form">
+    <form id="password-reset-form" method="POST" action="password-reset-code.php" >
         <div id="alert">
             <h2>Reset Password</h2>
         </div>
       
-        <label for="password">Password</label>
-        <input type="password" id="password" />
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" placeholder="Enter your email" />
       
-        <label for="password-verify">Re-type password</label>
-        <input type="password" id="password-verify" />
+        <!-- <label for="password-verify">Re-type password</label>
+        <input type="password" id="password-verify" /> -->
       
-        <button type="submit">Reset password</button>
+        <button type="submit" name="password-reset-link">Send password</button>
       </form>
 </body>
 </html>
