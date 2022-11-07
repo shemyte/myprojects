@@ -36,7 +36,7 @@
         <!-- <label for="password-verify">Re-type password</label>
         <input type="password" id="password-verify" /> -->
       
-        <button type="submit" name="password-reset-link">Send password</button>
+        <button type="submit" name="password-reset-link">Send password-reset-link</button>
       </form>
 </body>
 </html>

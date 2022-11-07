@@ -22,8 +22,8 @@ require 'vendor/autoload.php';
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'shemaiahngala8@gmail.com';                     //SMTP username
-    $mail->Password   = '364818471998RONA.';                               //SMTP password
+    $mail->Username   = 'skatuu@kabarak.ac.ke';                     //SMTP username
+    $mail->Password   = 'Kabarak123';                               //SMTP password
     // $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; 
     $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
     $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
@@ -39,18 +39,15 @@ require 'vendor/autoload.php';
         <h2>Hello</h2>
         <h3>Youe are receiving this email because we received a password reset request for your account.</h3>
         <br><br>
-        <a href='http://localhost/web-based-form/myprojects/password-reset.php?token=$token&email=$email'>Click Me</a>
+        <a href='http://localhost/web-based-form/myprojects/password-reset.php?token=$token&email=$get_email'>Click Me</a>
         ";
 
-        $mail->Body = $email_teplate;
+    $mail->Body = $email_teplate;
     $mail->send();
-    // $mail->addCC('cc@example.com');
-    // $mail->addBCC('bcc@example.com');
-
-    //Attachments
-    // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
-    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
- }
+}
+//  } catch (Exception $e){
+//     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+//  }
 
  if(isset($_POST['password-reset-link'])){
     $email = mysqli_real_escape_string($con, $_POST['email']);
@@ -60,6 +57,7 @@ require 'vendor/autoload.php';
     $check_email_run = mysqli_query( $con, $check_email);
 
     if(mysqli_num_rows($check_email_run)>0){
+        // echo "your email is $email";
         $row = mysqli_fetch_array($check_email_run);
         $get_name = $row['name'];
         $get_email = $row['email']; 
@@ -79,6 +77,7 @@ require 'vendor/autoload.php';
         exit(0);
         }
     }else{
+        // echo 'failed';
         $_SESSION['status'] = "No email found!";
         header("location: password-reset.php");
         exit(0);
