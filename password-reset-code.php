@@ -18,19 +18,19 @@ require 'vendor/autoload.php';
     $mail = new PHPMailer(true);
 
     //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-    $mail->isSMTP();                                            //Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'skatuu@kabarak.ac.ke';                     //SMTP username
-    $mail->Password   = 'Kabarak123';                               //SMTP password
-    // $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; 
-    $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
-    $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                     
+    $mail->isSMTP();                                            
+    $mail->Host       = 'smtp.gmail.com';                    
+    $mail->SMTPAuth   = true;                                   
+    $mail->Username   = 'skatuu@kabarak.ac.ke';                    
+    $mail->Password   = 'Kabarak123';                               
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; 
+    $mail->SMTPSecure = 'tls';           
+    $mail->Port       = 587;                                   
 
     //Recipients
     $mail->setFrom('shemaiahngala8@gmail.com', $get_name);
-    $mail->addAddress($get_email);     //Add a recipient
+    $mail->addAddress($get_email);     
     
     $mail->isHTML(true);               
     $mail->Subject = "Reset password notofication";
@@ -45,9 +45,6 @@ require 'vendor/autoload.php';
     $mail->Body = $email_teplate;
     $mail->send();
 }
-//  } catch (Exception $e){
-//     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-//  }
 
  if(isset($_POST['password-reset-link'])){
     $email = mysqli_real_escape_string($con, $_POST['email']);
@@ -77,10 +74,59 @@ require 'vendor/autoload.php';
         exit(0);
         }
     }else{
-        // echo 'failed';
         $_SESSION['status'] = "No email found!";
         header("location: password-reset.php");
         exit(0);
     }
  }
+
+ if(isset($_POST['password-update'])){
+    $email = mysqli_real_escape_string($con, $_POST['email']);
+    $new_password = mysqli_real_escape_string($con, $_POST['new-password']);
+    $confirm_password = mysqli_real_escape_string($con, $_POST['confirm-password']);
+
+    $token = mysqli_real_escape_string($con, $_POST['password-token']);
+
+    if(!empty($token)){
+        if(!empty($email) && !empty($new_password) && !empty($confirm_password)){
+            //checking if token is valid or not
+            $check_token = "SELECT verify_token FROM user_info WHERE verify_token='$token' LIMIT 1";
+            $check_token_run = mysqli_query($con, $check_token);
+
+            if(mysqli_num_rows($check_token_run) > 0){
+                if($new_password == $confirm_password){
+                    $update_password = "UPDATE user_info SET password='$new_password' WHERE verify_token='$token' LIMIT 1";
+                    $update_password_run = mysqli_query($con, $update_password);
+
+                    if($update_password_run){
+                        $_SESSION['status'] = "Updated password successfully!";
+                        header("location: login.html");
+                        exit(0);
+                    }else{
+                        $_SESSION['status'] = "Did not update password, something went wrong!";
+                        header("location: password-change.php?token=$token&email=$email");
+                        exit(0);
+                    }
+                }else{
+                    $_SESSION['status'] = "Password and Confirm password does not match!";
+                    header("location: password-change.php?token=$token&email=$email");
+                    exit(0);
+                }
+            }else{
+                $_SESSION['status'] = "Invalid Token!";
+                header("location: password-change.php?token=$token&email=$email");
+                exit(0);
+            }
+        }else{
+            $_SESSION['status'] = "All fields are Mandatory!";
+            header("location: password-change.php?token=$token&email=$email");
+            exit(0);
+        }
+    }else{
+        $_SESSION['status'] = "No token available!";
+        header("location: password-change.php");
+        exit(0);
+    }
+ }
+
 ?>
