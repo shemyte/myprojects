@@ -10,9 +10,6 @@ const form = document.querySelector('#form');
  
 
 form.addEventListener('submit', function (e) {
-        // prevent the form from submitting
-        // e.preventDefault();
-    
         // validate forms
         let isUsernameValid = checkUsername(),
             isEmailValid = checkEmail(),
@@ -62,9 +59,7 @@ const isPasswordSecure = (password) => {
 
 // show the error message
 const showError = (input, message) => {
-        // get the form-field element
         const formField = input.parentElement;
-        // add the error class
         formField.classList.remove('success');
         formField.classList.add('error');
     
@@ -75,7 +70,6 @@ const showError = (input, message) => {
 
 // show success message
 const showSuccess = (input) => {
-        // get the form-field element
         const formField = input.parentElement;
     
         // remove the error class

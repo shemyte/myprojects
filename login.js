@@ -1,15 +1,10 @@
 const usernameEl = document.querySelector('#username');
 const emailEl = document.querySelector('#email');
 const passwordEl = document.querySelector('#password');
-// const password2El = document.querySelector('#password2');
 
 const form = document.querySelector('#form');
  
-
 form.addEventListener('submit', function (e) {
-        // prevent the form from submitting
-        // e.preventDefault();
-    
         // validate forms
         let isUsernameValid = checkUsername(),
             isEmailValid = checkEmail(),
@@ -47,12 +42,10 @@ const isPasswordSecure = (password) => {
 
 // show the error message
 const showError = (input, message) => {
-        // get the form-field element
         const formField = input.parentElement;
-        // add the error class
         formField.classList.remove('success');
-        formField.classList.add('error');
-    
+        formField.classList.add('error')
+
         // show the error message
         const error = formField.querySelector('small');
         error.textContent = message;
@@ -60,10 +53,7 @@ const showError = (input, message) => {
 
 // show success message
 const showSuccess = (input) => {
-        // get the form-field element
         const formField = input.parentElement;
-    
-        // remove the error class
         formField.classList.remove('error');
         formField.classList.add('success');
     
@@ -73,12 +63,10 @@ const showSuccess = (input) => {
 }
 
 const checkUsername = () => {
-
         let valid = false;
         const min = 3,
             max = 25;
         const username = usernameEl.value.trim();
-    
         if (!isRequired(username)) {
             showError(usernameEl, 'Username cannot be blank.');
         } else if (!isBetween(username.length, min, max)) {
@@ -106,11 +94,8 @@ const checkUsername = () => {
 
 //     validate the password
 const checkPassword = () => {
-
         let valid = false;
-    
         const password = passwordEl.value.trim();
-    
         if (!isRequired(password)) {
             showError(passwordEl, 'Password cannot be blank.');
         } else if (!isPasswordSecure(password)) {
@@ -119,6 +104,5 @@ const checkPassword = () => {
             showSuccess(passwordEl);
             valid = true;
         }
-    
         return valid;
     };

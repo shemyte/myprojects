@@ -18,18 +18,20 @@ require 'vendor/autoload.php';
     $mail = new PHPMailer(true);
 
     //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                     
-    $mail->isSMTP();                                            
-    $mail->Host       = 'smtp.gmail.com';                    
-    $mail->SMTPAuth   = true;                                   
-    $mail->Username   = 'smtp.gmail.com';                    
-    $mail->Password   = 'Kabarak123';                               
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; 
+    // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                     
+    $mail->isSMTP(); 
+    $mail->SMTPAuth   = true; 
+
+    $mail->Host       = 'smtp.gmail.com';                                                 
+    $mail->Username   = 'skatuu@kabarak.ac.ke';                    
+    $mail->Password   = 'kabarak123'; 
+                                  
+    // $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; 
     $mail->SMTPSecure = 'tls';           
     $mail->Port       = 587;                                   
 
     //Recipients
-    $mail->setFrom('shemaiahngala8@gmail.com', $get_name);
+    $mail->setFrom('skatuu@kabarak.ac.ke', $get_name);
     $mail->addAddress($get_email);     
     
     $mail->isHTML(true);               

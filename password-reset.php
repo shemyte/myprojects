@@ -121,7 +121,7 @@
         form.addEventListener('submit', function (e) {
             // check if form is valid
             let isEmailValid = checkEmail();
-
+            
             let isFormValid = isEmailValid;
 
             // submitting to the server if form is valid
