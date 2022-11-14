@@ -12,7 +12,8 @@ input[type=text], input[type=password] {
     padding: 12px 18px;
     margin: 8px 0;
     display: inline-block;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
+    border-radius: 3px;
     box-sizing: border-box;
 }
 
@@ -45,18 +46,23 @@ input[type=text], input[type=password] {
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
+    border-radius: 3px;
     cursor: pointer;
     width: 100%;
 }
 
 .log-in:hover{
     /* opacity: 0.8; */
-    background-color: #074197;
+    background-color: darkblue;
 }
 
 span.psw {
     float: right;
     padding: 5px 10px;
+}
+
+a{
+    text-decoration: none;
 }
 
 .container {

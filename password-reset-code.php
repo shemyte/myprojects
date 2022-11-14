@@ -22,7 +22,7 @@ require 'vendor/autoload.php';
     $mail->isSMTP();                                            
     $mail->Host       = 'smtp.gmail.com';                    
     $mail->SMTPAuth   = true;                                   
-    $mail->Username   = 'skatuu@kabarak.ac.ke';                    
+    $mail->Username   = 'smtp.gmail.com';                    
     $mail->Password   = 'Kabarak123';                               
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; 
     $mail->SMTPSecure = 'tls';           
@@ -69,7 +69,7 @@ require 'vendor/autoload.php';
             header("location: password-reset.php");
             exit(0);
         }else{
-            $_SESSION['status'] = "Something went wrong. #1";
+            $_SESSION['status'] = "Something went wrong.";
         header("location: password-reset.php");
         exit(0);
         }
@@ -99,6 +99,10 @@ require 'vendor/autoload.php';
                     $update_password_run = mysqli_query($con, $update_password);
 
                     if($update_password_run){
+                        $new_token = md5(rand());
+                        $update_to_new_token = "UPDATE user_info SET verify_token='$new_token' WHERE verify_token='$token' LIMIT 1";
+                        $update_to_new_token_run = mysqli_query($con, $update_to_new_token);
+
                         $_SESSION['status'] = "Updated password successfully!";
                         header("location: login.html");
                         exit(0);
