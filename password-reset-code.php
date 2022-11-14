@@ -22,14 +22,14 @@ require 'vendor/autoload.php';
     $mail->isSMTP();                                            
     $mail->Host       = 'smtp.gmail.com';                    
     $mail->SMTPAuth   = true;                                   
-    $mail->Username   = 'smtp.gmail.com';                    
-    $mail->Password   = 'Kabarak123';                               
+    $mail->Username   = 'your email';                    
+    $mail->Password   = 'your password';                               
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; 
     $mail->SMTPSecure = 'tls';           
     $mail->Port       = 587;                                   
 
     //Recipients
-    $mail->setFrom('shemaiahngala8@gmail.com', $get_name);
+    $mail->setFrom('your email', $get_name);
     $mail->addAddress($get_email);     
     
     $mail->isHTML(true);               
