@@ -21,15 +21,16 @@ require 'vendor/autoload.php';
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;                     
     $mail->isSMTP();                                            
     $mail->Host       = 'smtp.gmail.com';                    
-    $mail->SMTPAuth   = true;                                   
-    $mail->Username   = 'your email';                    
-    $mail->Password   = 'your password';                               
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; 
+    $mail->SMTPAuth   = true;
+
+    $mail->Username   = 'ngalakatuu@gmail.com';                    
+    $mail->Password   = 'NgalaKatuu!@#';                               
+    // $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; 
     $mail->SMTPSecure = 'tls';           
     $mail->Port       = 587;                                   
 
     //Recipients
-    $mail->setFrom('shemaiahngala8@gmail.com', $get_name);
+    $mail->setFrom('ngalakatuu@gmail.com', $get_name);
     $mail->addAddress($get_email);     
     
     $mail->isHTML(true);               
@@ -43,7 +44,14 @@ require 'vendor/autoload.php';
         ";
 
     $mail->Body = $email_teplate;
-    $mail->send();
+    if(!$mail->send()){
+        $error = "Mailer Error: ".$mail->ErrorInfo;
+        $_SESSION['status'] = "'.$error.'";
+        // echo " <div class=display> '.$error.'</div>";
+    }else{
+        $_SESSION['status'] = "Email Sent";
+        // echo " <div class=display> Message sent</div>";
+    }
 }
 
  if(isset($_POST['password-reset-link'])){
@@ -54,7 +62,6 @@ require 'vendor/autoload.php';
     $check_email_run = mysqli_query( $con, $check_email);
 
     if(mysqli_num_rows($check_email_run)>0){
-        // echo "your email is $email";
         $row = mysqli_fetch_array($check_email_run);
         $get_name = $row['name'];
         $get_email = $row['email']; 

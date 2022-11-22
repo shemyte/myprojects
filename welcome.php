@@ -71,7 +71,7 @@
                     if(isset($_POST['submit'])) {
                         $search = $_POST['search'];
 
-                        $sql = "select * from user_info  where id = '$search' or username like '%$search%'";
+                        $sql = "select * from user_info  where id = '$search' or username like '%$search%' or registration like '%search%'";
                         $result = mysqli_query($con, $sql);
 
                         if($result) {
@@ -81,6 +81,7 @@
                                         <th>id</th>
                                         <th>username</th>
                                         <th>date</th>
+                                        <th></th>
                                     </tr>
                                 </table>';
 
@@ -90,6 +91,7 @@
                                     <td><a href="searchData.php?data='.$row['id'].'">'.$row['id'].'</a></td>
                                     <td>'.$row['username'].'</td>
                                     <td>'.$row['date'].'</td>
+                                    <td>'.$row['registration'].'</td>
                                 </tr>
                                 </table>';
                                 }
