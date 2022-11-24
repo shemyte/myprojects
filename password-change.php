@@ -19,6 +19,7 @@
             background-image: url("images/pic\ \(2\).jpg");
             background-size: cover;
             background-attachment: fixed;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         button{
             display: block;
@@ -83,7 +84,7 @@
         .alert1{
             text-align: center;
             font-size: x-large;
-            color: black; 
+            color: red; 
             background-color: silver;
             padding: 10px;
         }
@@ -113,7 +114,7 @@
 
         <div class="form-field">
         <label for="email">Email</label>
-        <input type="text" id="email" name="email" value="<?php if(isset($_GET['email'])){echo $_GET['email'];}?>" placeholder="Enter your email"/>
+        <input type="text" id="email" name="email" value="<?php if(isset($_GET['email'])){echo $_GET['email'];}?>" placeholder="youremail@gmail.com"/>
         <small></small>
         </div>
 

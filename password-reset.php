@@ -15,6 +15,7 @@
             background-image: url("images/pic\ \(2\).jpg");
             background-size: cover;
             background-attachment: fixed;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         button,input {
             display: block;

@@ -44,8 +44,7 @@
 </head>
 <body>
     <?php 
-        $data = $_GET['data'];
-        // echo $data;
+        $data = $_GET['data']; 
         $sql = "select * from user_info where id = $data";
         $result = mysqli_query($con, $sql);
         if($result) {

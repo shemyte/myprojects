@@ -71,29 +71,29 @@
                     if(isset($_POST['submit'])) {
                         $search = $_POST['search'];
 
-                        $sql = "select * from user_info  where id = '$search' or username like '%$search%' or registration like '%search%'";
+                        $sql = "select * from user_info  where id like '%$search%' or username like '%$search%' or registration like '%$search%'";
                         $result = mysqli_query($con, $sql);
 
                         if($result) {
                             if(mysqli_num_rows($result) > 0) {
-                                echo '<table>
+                                echo '<thead>
                                     <tr>
                                         <th>id</th>
                                         <th>username</th>
                                         <th>date</th>
-                                        <th></th>
+                                        <th>registration</th>
                                     </tr>
-                                </table>';
-
+                                </thead>';
+                                // fetch all data matching the search result
                                 while($row = mysqli_fetch_assoc($result)){
-                                echo '<table>
+                                echo '<tbody>
                                 <tr>  
                                     <td><a href="searchData.php?data='.$row['id'].'">'.$row['id'].'</a></td>
                                     <td>'.$row['username'].'</td>
                                     <td>'.$row['date'].'</td>
                                     <td>'.$row['registration'].'</td>
                                 </tr>
-                                </table>';
+                                </tbody>';
                                 }
                             }else {
                                 echo '<h2 style="color: red;">Data not found</h2>';
